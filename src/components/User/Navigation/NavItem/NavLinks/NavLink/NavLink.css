@@ -1,0 +1,49 @@
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+.subLink {
+  color: #000;
+  text-decoration: none;
+}
+
+.link .menuButton,
+.subLink .menuButton {
+  text-transform: capitalize;
+  font-weight: 400;
+  width: 100%;
+}
+
+.linkActive {
+  color: orangered;
+}
+
+Button.buttonMenu {
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+Button.buttonMenu:focus {
+  color: orangered;
+}
+
+@media screen and (max-width: 959px) {
+  .link .menuButton,
+  Button.buttonMenu {
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.menuItem {
+  padding: 0;
+  display: block;
+  height: auto;
+}
+
+@media screen and (max-width: 959px) {
+  .menuButton {
+    padding: 1rem;
+  }
+}

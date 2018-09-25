@@ -1,0 +1,19 @@
+.headerHome {
+  height: 50vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.headerBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  padding: 0.5rem;
+  color: #fff;
+  letter-spacing: 1px;
+}

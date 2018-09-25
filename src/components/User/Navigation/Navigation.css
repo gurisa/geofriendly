@@ -1,0 +1,16 @@
+.appBar {
+  background-color: #fff;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.toolbar {
+  width: 100%;
+  max-width: 1366px;
+}
+
+@media screen and (max-width: 599px) {
+  .appBar {
+    padding: 0;
+  }
+}

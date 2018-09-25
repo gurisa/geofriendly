@@ -1,0 +1,38 @@
+.search {
+  margin: 0 1rem;
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+}
+
+.input {
+  padding: .85rem;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(245, 245, 245);
+  border-radius: 2px;
+}
+
+.input:focus {
+  background-color: #fff;
+}
+
+.button {
+  color: rgb(110, 110, 110);
+  height: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 2px 2px 0;
+}
+
+.button:hover {
+  color: orangered;
+}

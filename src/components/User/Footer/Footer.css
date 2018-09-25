@@ -1,0 +1,25 @@
+.footer {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.footerItem {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1366px;
+}
+
+@media screen and (max-width: 599px) {
+  .footer {
+    padding: 1.5rem;
+  }
+
+  .footerItem {
+    flex-direction: column;
+  }
+}

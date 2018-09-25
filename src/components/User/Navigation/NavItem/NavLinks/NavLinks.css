@@ -1,0 +1,13 @@
+.navLinks {
+  display: flex;
+}
+
+@media screen and (max-width: 959px) {
+  .navLinks {
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    margin-top: 1rem;
+    border-top: 1px solid #ccc;
+  }
+}
