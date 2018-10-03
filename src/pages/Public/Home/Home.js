@@ -1,7 +1,7 @@
 import React from 'react';
 
-import HeaderHome from '../../../components/User/Header/HeaderHome/HeaderHome';
-import Categorys from '../../../components/User/Categorys/Categorys';
+import HeaderHome from '../../../components/Public/Header/HeaderHome/HeaderHome';
+import Categorys from '../../../components/Public/Categorys/Categorys';
 
 import classes from '../Container.css';
 

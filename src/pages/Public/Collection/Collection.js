@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Collections from '../../../components/User/Collections/Collections';
-import HeaderCollection from '../../../components/User/Header/HeaderCollection/HeaderCollection';
+import Collections from '../../../components/Public/Collections/Collections';
+import HeaderCollection from '../../../components/Public/Header/HeaderCollection/HeaderCollection';
 
 import classes from '../Container.css';
 

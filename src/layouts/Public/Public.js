@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import Navigation from '../../components/User/Navigation/Navigation';
-import Footer from '../../components/User/Footer/Footer';
+import Navigation from '../../components/Public/Navigation/Navigation';
+import Footer from '../../components/Public/Footer/Footer';
 import Div from '../../hoc/Div/Div';
-import Sidebar from '../../components/User/Navigation/Sidebar/Sidebar';
-import Backdrop from '../../components/User/Backdrop/Backdrop';
+import Sidebar from '../../components/Public/Navigation/Sidebar/Sidebar';
+import Backdrop from '../../components/Public/Backdrop/Backdrop';
 import Routes from './Routes/Routes';
 
-class User extends Component {
+class Public extends Component {
     state = {
         category: [
             { path: '/collection/flora', name: 'flora' },
@@ -72,4 +72,4 @@ class User extends Component {
     }
 }
 
-export default User;
+export default Public;

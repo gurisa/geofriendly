@@ -74,7 +74,7 @@ const category = props => {
         renderCenterRightControls={({ nextSlide }) => (
           <Button 
             variant="fab" 
-            aria-label="Prev" 
+            aria-label="Next" 
             onClick={nextSlide}
             style={{backgroundColor: '#fff', display: `${display}`}}
           >

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Admin from './layouts/Admin/Admin';
-import User from './layouts/User/User';
-import NotFound from './pages/User/NotFound/NotFound';
+import Dashboard from './layouts/Dashboard/Dashboard';
+import Login from './layouts/Auth/Auth';
+import Logout from './layouts/Auth/Logout/Logout';
+import SignUp from './layouts/Auth/SignUp/SignUp';
+import Public from './layouts/Public/Public';
+import NotFound from './pages/Public/NotFound/NotFound';
 import ScrollToTop from './ScrollToTop';
 
 class App extends Component {
@@ -12,8 +15,11 @@ class App extends Component {
       <Router>
         <ScrollToTop>
           <Switch>
-            <Route path="/admin" component={Admin} />
-            <Route axact path="/" component={User} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/login" component={Login} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/signup" component={SignUp} />
+            <Route axact path="/" component={Public} />
             <Route component={NotFound} />
           </Switch>
         </ScrollToTop>

@@ -1,21 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+import { Link } from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+import Menu from '@material-ui/icons/Menu';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import Home from '@material-ui/icons/Home';
+import Chat from '@material-ui/icons/Chat';
+import Notifications from '@material-ui/icons/Notifications';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
+
+import className from './Navigation.css';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 440,
+    minHeight: '100vh',
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -77,7 +91,7 @@ const styles = theme => ({
   },
 });
 
-class Admin extends React.Component {
+class Navigation extends React.Component {
   state = {
     open: false,
   };
@@ -98,19 +112,40 @@ class Admin extends React.Component {
         <AppBar
           position="absolute"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+          style={{background: '#fff', color: '#000'}}
         >
-          <Toolbar disableGutters={!this.state.open}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, this.state.open && classes.hide)}
-            >
-              Menu
-            </IconButton>
-            <Typography variant="title" color="inherit" noWrap>
-              Mini variant drawer
-            </Typography>
+          <Toolbar disableGutters={!this.state.open} className={className.toolbar}>
+            <div className={className.title}>
+              <IconButton
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.handleDrawerOpen}
+                className={classNames(classes.menuButton, this.state.open && classes.hide)}
+              >
+                <Menu />
+              </IconButton>
+              <Typography 
+                variant="title" 
+                color="inherit" 
+                noWrap 
+                style={{display: 'inline-block'}}
+              >
+                GeoFriendly
+              </Typography>
+            </div>
+            <div style={{paddingRight: this.state.open ? '0' : '1.5rem'}}>
+              <Link to='/logout'>
+                <IconButton>
+                  <Chat />
+                </IconButton>
+              </Link>
+              <IconButton>
+                <Notifications />
+              </IconButton>
+              <IconButton>
+                <ArrowDropDown />
+              </IconButton>
+            </div>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -122,15 +157,17 @@ class Admin extends React.Component {
         >
           <div className={classes.toolbar}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'rtl' ? '>' : '<'}
+              {theme.direction !== 'rtl' ? <ChevronLeft /> : null}
             </IconButton>
           </div>
           <Divider />
-          <List>Hai</List>
           <Divider />
-          <List>
-            <p>Hai Kamu lagi ngapain</p>
-          </List>
+          <ListItem button>
+            <ListItemIcon>
+              <Home />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
@@ -141,9 +178,9 @@ class Admin extends React.Component {
   }
 }
 
-Admin.propTypes = {
+Navigation.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Admin);
+export default withStyles(styles, { withTheme: true })(Navigation);
