@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import { Link } from 'react-router-dom';
-
-import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-
+import {
+  withStyles,
+  Drawer,
+  AppBar,
+  Toolbar,
+  Typography,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from '@material-ui/core';
 import Menu from '@material-ui/icons/Menu';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import Home from '@material-ui/icons/Home';
@@ -139,9 +138,11 @@ class Navigation extends React.Component {
                   <Chat />
                 </IconButton>
               </Link>
-              <IconButton>
-                <Notifications />
-              </IconButton>
+              <Link to='/'>
+                <IconButton>
+                  <Notifications />
+                </IconButton>
+              </Link>
               <IconButton>
                 <ArrowDropDown />
               </IconButton>

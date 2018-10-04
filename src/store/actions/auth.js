@@ -7,11 +7,10 @@ export const authStart = () => {
   };
 };
 
-export const authSuccess = (token, userId) => {
+export const authSuccess = token => {
   return {
     type: actionTypes.AUTH_SUCCESS,
-    token: token,
-    userId: userId
+    token: token
   };
 };
 
@@ -22,12 +21,9 @@ export const authFail = (error) => {
   };
 };
 
-export const authLogout = () => {
-  // remove local
-  localStorage.removeItem('token');
-
+export const errorReset = () => {
   return {
-    type: actionTypes.AUTH_LOGOUT
+    type: actionTypes.ERROR_RESET
   };
 };
 
@@ -38,12 +34,14 @@ export const auth = (username, password) => {
       username: username,
       password: password
     };
-    const url = 'https://g3ofriendly.gurisa.com/api/v1/auth/login'
+    const url = 'https://g3ofriendly.gurisa.com/api/v1/auth/login';
     axios.post(url, authData)
       .then(response => {
         if (response.data.status) {
-          dispatch(authSuccess(response.data.data.token.token, response.data.data.token.token));
           localStorage.setItem('token', response.data.data.token.token);
+          localStorage.setItem('expiredDate', response.data.data.token.expired_at);
+          dispatch(authSuccess(response.data.data.token.token));
+          dispatch(checkAuthTimeout(response.data.data.token.expired_at));
         } else {
           dispatch(authFail(response.data.message));
         }
@@ -52,12 +50,38 @@ export const auth = (username, password) => {
 };
 
 export const authCheckState = () => {
+  const token = localStorage.getItem('token');
   return dispatch => {
-    const token = localStorage.getItem('token');
     if (!token) {
-      dispatch(authLogout());
+      dispatch(logout());
     } else {
-      dispatch(authSuccess(token, token));
+      const expiredDate = localStorage.getItem('expiredDate');
+      if (expiredDate <= new Date()) {
+        dispatch(logout());
+      } else {
+        dispatch(authSuccess(token));
+        dispatch(checkAuthTimeout(expiredDate));
+      }
     }
+  };
+};
+
+export const checkAuthTimeout = expiredDate => {
+  const expiredTime = new Date(expiredDate) - new Date();
+
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(logout());
+    }, expiredTime)
+  }
+}
+
+export const logout = () => {
+  // remove local storage
+  localStorage.removeItem('token');
+  localStorage.removeItem('expiredDate');
+
+  return {
+    type: actionTypes.AUTH_LOGOUT
   };
 };

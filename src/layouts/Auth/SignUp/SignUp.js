@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
+import {
+  Typography,
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  Button
+} from '@material-ui/core';
 
 import classes from './SignUp.css';
 
 class Login extends Component {
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
   render() {
     return (
       <div className={classes.login}>
@@ -19,7 +28,7 @@ class Login extends Component {
             GeoFriendly
           </Typography>
           <Typography className={classes.subheading} variant="subheading">
-            Welcome back! Please login to your account.
+            Please complete to create your account.
           </Typography>
 
           <form className={classes.form} noValidate autoComplete="off">
@@ -85,7 +94,7 @@ class Login extends Component {
               </Button>
             </div>
             
-            <Link to='/login'>
+            <Link to='/signin'>
                 <Typography variant='body1'>
                   Already have an account? Sign in.
                 </Typography>

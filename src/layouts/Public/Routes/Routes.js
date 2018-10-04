@@ -1,7 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Home, Collection, About, NotFound } from './lazy';
+import Home from '../../../pages/Public/Home/Home';
+import Collection from '../../../pages/Public/Collection/Collection';
+import About from '../../../pages/Public/About/About';
+import NotFound from '../../../pages/Public/NotFound/NotFound';
 
 const routes = props => {
     const { width, category, } = props;

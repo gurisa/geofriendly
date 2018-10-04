@@ -3,17 +3,19 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
+import {
+  Typography,
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  Button
+} from '@material-ui/core';
 
 import classes from './Auth.css';
 import * as actions from '../../store/actions/index';
 
-class Login extends Component {
+class Auth extends Component {
   state = {
     loginForm: {
       username: {
@@ -39,7 +41,12 @@ class Login extends Component {
         isActive: false
       }
     },
-    formIsValid: false
+    formIsValid: false,
+    redirectUrl: null
+  }
+
+  componentDidMount() {
+    this.props.errorReset();
   }
 
   inputChangedHandler = (e, id) => {
@@ -193,7 +200,15 @@ class Login extends Component {
                 </Button>
               </Link>
             </div>
+
+            <Link to='/'>
+              <Typography>
+                Cancel your login? Back to home
+              </Typography>
+            </Link>
           </form>
+          
+          
         </div>
       </div>
     );
@@ -209,8 +224,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (username, password) => dispatch(actions.auth(username, password))
+    onAuth: (username, password) => dispatch(actions.auth(username, password)),
+    errorReset: () => dispatch(actions.errorReset())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

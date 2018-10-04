@@ -19,7 +19,8 @@ class Public extends Component {
         link: [
             { path: '/', name: 'Home', submenu: null },
             { path: '', name: 'Collection', submenu: null},
-            { path: '/about', name: 'About Us', submenu: null }
+            { path: '/about', name: 'About Us', submenu: null },
+            { path: '/dashboard', name: 'Dashboard', submenu: null }
         ],
         isShow: false,
         width: window.innerWidth
